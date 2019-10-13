@@ -1,0 +1,4 @@
+https://www.golang-book.com/books/intro
+
+
+----> https://blog.golang.org/go-slices-usage-and-internals
