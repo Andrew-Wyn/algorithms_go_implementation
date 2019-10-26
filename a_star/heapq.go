@@ -25,15 +25,18 @@ type Heap struct {
 }
 
 func parent(i int) int {
-	return (i >> 1)
+	i++
+	return (i >> 1) - 1
 }
 
 func left(i int) int {
-	return (i << 1)
+	i++
+	return (i << 1) - 1
 }
 
 func right(i int) int {
-	return (i << 1) ^ 1
+	i++
+	return (i << 1)
 }
 
 // O(log n)
