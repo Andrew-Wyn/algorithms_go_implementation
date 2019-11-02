@@ -6,16 +6,19 @@ import (
 	"fmt"
 )
 
-func parent(i int) int {
-	return (i >> 1)
+func Parent(i int) int {
+	i++
+	return (i >> 1) - 1
 }
 
-func left(i int) int {
+func Left(i int) int {
+	i++
+	return (i << 1) - 1
+}
+
+func Right(i int) int {
+	i++
 	return (i << 1)
-}
-
-func right(i int) int {
-	return (i << 1) ^ 1
 }
 
 type Heap struct {
@@ -24,9 +27,9 @@ type Heap struct {
 }
 
 // O(log n)
-func (c *Heap) maxHeapify(i int) {
-	l := left(i)
-	r := right(i)
+func (c *Heap) MaxHeapify(i int) {
+	l := Left(i)
+	r := Right(i)
 
 	var massimo int = -1
 
@@ -41,31 +44,31 @@ func (c *Heap) maxHeapify(i int) {
 	}
 
 	if massimo != i {
-		c.change(i, massimo)
-		c.maxHeapify(massimo)
+		c.Change(i, massimo)
+		c.MaxHeapify(massimo)
 	}
 }
 
 // O(n)
-func (c *Heap) buildMaxHeap() {
+func (c *Heap) BuildMaxHeap() {
 	c.heapSize = len(c.value)
 
 	for i := int(len(c.value)/2) - 1; i >= 0; i-- {
-		c.maxHeapify(i)
+		c.MaxHeapify(i)
 	}
 }
 
-func (c *Heap) sort() {
-	c.buildMaxHeap()
+func (c *Heap) Sort() {
+	c.BuildMaxHeap()
 
 	for i := len(c.value) - 1; i >= 1; i-- {
-		c.change(0, i)
+		c.Change(0, i)
 		c.heapSize--
-		c.maxHeapify(0)
+		c.MaxHeapify(0)
 	}
 }
 
-func (c *Heap) change(a int, b int) {
+func (c *Heap) Change(a int, b int) {
 	temp := c.value[a]
 	c.value[a] = c.value[b]
 	c.value[b] = temp
@@ -78,7 +81,7 @@ func main() {
 
 	fmt.Println(heap)
 
-	heap.sort()
+	heap.Sort()
 
 	fmt.Println(heap)
 
