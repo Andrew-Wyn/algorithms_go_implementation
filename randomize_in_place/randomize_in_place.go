@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"math/rand"
 	"time"
+
+	golang_module "github.com/Andrew-Wyn/golangModule"
 )
 
 func randomizeInPlace(a []int) {
@@ -32,4 +34,7 @@ func main() {
 	randomizeInPlace(v)
 
 	fmt.Println(v)
+
+	golang_module.CiaoTerraformer()
+
 }

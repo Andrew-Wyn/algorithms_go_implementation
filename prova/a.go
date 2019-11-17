@@ -2,11 +2,11 @@ package main
 
 import (
 	"fmt"
-
-	"./b"
+	"prova/b"
 )
 
 func main() {
 	fmt.Println(b.MeanOfLife)
 	fmt.Println("version ---> ", version)
+	golang_module.CiaoTerraformer()
 }
